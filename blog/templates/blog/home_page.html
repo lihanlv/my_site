@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Welcome to Nancy's Blog</title>
+</head>
+<body>
+ <!-- Site Header -->
+ <h1>Hi. I am Nancy. Welcome to my blog!</h1>
+
+<!-- Blog Post -->
+ <h2>こんにちは!</h2>
+ <p>O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O  
+
+ 	O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O
+
+ 	O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O 
+
+ 	O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O
+
+ 	O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O  
+
+ 	O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O O(∩_∩)O 
+
+ 	O(∩_∩)O O(∩_∩)O</p>
+
+<!-- Like And Comment -->
+ <button>Like</button>
+ <h2>Leave a Comment</h2>
+ <form action="{% url 'blog:home_page' %}" method="POST">
+	 {% csrf_token %}
+	 <input type="text" placeholder="Please Enter Your username" name="username"><br><br>
+	 <textarea name="comment" placeholder="Please Enter Your Comment"></textarea><br>
+	 <input type="submit" value="Post Me!">
+ </form>
+
+<h2>Comments</h2>
+ User {{comment.user}} says: {{comment.comment}}
+
+
+ <h2>All Comments</h2>
+ {% for each_comment in comments %}
+ User {{each_comment.user}} says: {{each_comment.comment}} <hr>
+{% endfor %}
+</body>
+</html>
